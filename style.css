@@ -176,11 +176,21 @@ li button:hover {
 @media (max-width: 768px) {
 
   body {
-    min-height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-attachment: scroll; /* FIXES mobile bug */
-  }
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+
+  min-height: 100dvh; /* 🔥 mobile fix */
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+}
+
+.app {
+  position: relative;
+  z-index: 1;
+}
 
   .app {
     margin: 20px;
