@@ -10,40 +10,52 @@ body {
   font-family: 'Segoe UI', sans-serif;
   color: white;
 
-  min-height: 100vh;
+  min-height: 100dvh;
 
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
 }
 
-/* Overlay (FULL SCREEN FIXED) */
+/* Overlay */
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: -1;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 0;
+}
+
+/* Theme backgrounds */
+body.aot {
+  background-image: url("images/aot.jpg");
+}
+
+body.naruto {
+  background-image: url("images/naruto.jpg");
+}
+
+body.yourname {
+  background-image: url("images/yourname.jpg");
+}
+
+body.apothecary {
+  background-image: url("images/apothecary.jpg");
 }
 
 /* App container */
 .app {
-  width: 100%;
-  max-width: 500px;
+  position: relative;
+  z-index: 1;
 
+  max-width: 500px;
   margin: 40px auto;
   padding: 20px;
 
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,0.1);
   backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
 
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Heading */
@@ -57,12 +69,10 @@ h1 {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-  font-size: 15px;
 }
 
 /* Progress bar */
 .bar {
-  width: 100%;
   height: 8px;
   background: rgba(255,255,255,0.2);
   border-radius: 10px;
@@ -74,10 +84,10 @@ h1 {
   height: 100%;
   width: 0%;
   background: linear-gradient(90deg, #00ffcc, #00ffaa);
-  transition: width 0.3s ease;
+  transition: 0.3s;
 }
 
-/* Input section */
+/* Input */
 .input {
   display: flex;
   gap: 10px;
@@ -87,141 +97,62 @@ h1 {
 .input input {
   flex: 1;
   padding: 8px;
-  border: none;
   border-radius: 6px;
-  outline: none;
+  border: none;
 }
 
-/* Buttons */
-.input button,
-.reset,
-li button {
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-/* Add button */
 .input button {
   padding: 8px 12px;
   background: #00ffcc;
-  color: black;
-}
-
-.input button:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
-}
-
-/* Theme dropdown */
-select {
-  width: 100%;
-  margin: 10px 0;
-  padding: 6px;
-  border-radius: 6px;
   border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-/* Task list */
+/* Tasks */
 ul {
   list-style: none;
-  margin-top: 10px;
 }
 
 li {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-
   padding: 10px;
   margin-bottom: 8px;
 
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255,255,255,0.15);
   border-radius: 8px;
   cursor: pointer;
-
-  transition: all 0.2s ease;
 }
 
-li:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-/* Delete button */
 li button {
   background: red;
+  border: none;
   color: white;
   padding: 4px 8px;
 }
 
-li button:hover {
-  transform: scale(1.1);
-}
-
-/* Reset button */
+/* Reset */
 .reset {
   width: 100%;
   margin-top: 15px;
   padding: 10px;
   background: #ff4444;
+  border: none;
   color: white;
 }
 
-.reset:hover {
-  transform: scale(1.03);
-}
-
-/* ---------------- MOBILE FIX ---------------- */
+/* Mobile fix */
 @media (max-width: 768px) {
-
   body {
-  font-family: 'Segoe UI', sans-serif;
-  color: white;
-
-  min-height: 100dvh; /* 🔥 mobile fix */
-
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: scroll;
-}
-
-.app {
-  position: relative;
-  z-index: 1;
-}
+    background-attachment: scroll;
+  }
 
   .app {
     margin: 20px;
-    padding: 15px;
-  }
-
-  h1 {
-    font-size: 22px;
-  }
-
-  .stats {
-    flex-direction: column;
-    gap: 5px;
-    font-size: 14px;
   }
 
   .input {
     flex-direction: column;
-  }
-
-  .input input,
-  .input button {
-    width: 100%;
-  }
-
-  li {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  .reset {
-    padding: 8px;
   }
 }

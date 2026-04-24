@@ -2,7 +2,7 @@ let tasks = [];
 let xp = 0;
 let level = 1;
 
-// Load saved data
+// Load data
 window.onload = function () {
   const savedTasks = JSON.parse(localStorage.getItem("tasks"));
   const savedXP = JSON.parse(localStorage.getItem("xp"));
@@ -27,14 +27,9 @@ function addTask() {
 
   if (!text) return;
 
-  tasks.push({
-    text: text,
-    done: false,
-    xp: 10
-  });
+  tasks.push({ text, done: false, xp: 10 });
 
   input.value = "";
-
   saveData();
   updateUI();
 }
@@ -43,7 +38,6 @@ function addTask() {
 function completeTask(index) {
   if (!tasks[index].done) {
     tasks[index].done = true;
-
     xp += tasks[index].xp;
 
     updateLevel();
@@ -59,36 +53,34 @@ function deleteTask(index) {
   updateUI();
 }
 
-// Level system
+// Level
 function updateLevel() {
   level = Math.floor(xp / 50) + 1;
 }
 
-// UI update
+// UI
 function updateUI() {
   const list = document.getElementById("taskList");
   list.innerHTML = "";
 
-  tasks.forEach((task, index) => {
+  tasks.forEach((task, i) => {
     const li = document.createElement("li");
-
     li.textContent = task.text;
 
     if (!task.done) {
-      li.onclick = () => completeTask(index);
+      li.onclick = () => completeTask(i);
     } else {
       li.style.textDecoration = "line-through";
     }
 
-    const del = document.createElement("button");
-    del.textContent = "X";
-
-    del.onclick = (e) => {
+    const btn = document.createElement("button");
+    btn.textContent = "X";
+    btn.onclick = (e) => {
       e.stopPropagation();
-      deleteTask(index);
+      deleteTask(i);
     };
 
-    li.appendChild(del);
+    li.appendChild(btn);
     list.appendChild(li);
   });
 
@@ -99,49 +91,33 @@ function updateUI() {
   document.getElementById("progressBar").style.width = progress + "%";
 }
 
-// Save data
+// Save
 function saveData() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
   localStorage.setItem("xp", JSON.stringify(xp));
 }
 
-// Theme change
+// Theme
 function changeTheme() {
   const theme = document.getElementById("themeSelect").value;
-
   applyTheme(theme);
   localStorage.setItem("theme", theme);
 }
 
-// Theme handling
 function applyTheme(theme) {
-  let bg = "";
+  document.body.className = "";
 
-  if (theme === "aot") {
-    bg = "url('images/aot.jpg')";
-  } else if (theme === "naruto") {
-    bg = "url('images/naruto.jpg')";
-  } else if (theme === "yourname") {
-    bg = "url('images/yourname.jpg')";
-  } else if (theme === "apothecary") {
-    bg = "url('images/apothecary.jpg')";
-  } else {
-    bg = "none";
+  if (theme !== "default") {
+    document.body.classList.add(theme);
   }
-
-  document.body.style.backgroundImage = bg;
-  document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundPosition = "center";
 }
 
-// Reset everything (keeps theme)
+// Reset
 function resetAll() {
   tasks = [];
   xp = 0;
   level = 1;
 
-  localStorage.removeItem("tasks");
-  localStorage.removeItem("xp");
-
+  localStorage.clear();
   updateUI();
 }

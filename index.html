@@ -25,13 +25,16 @@
       <button onclick="addTask()">Add</button>
     </div>
 
-    <select id="themeSelect" onchange="changeTheme()">
-  <option value="default">Default</option>
-  <option value="apothecary">The Apothecary Diaries</option>
-  <option value="naruto">Naruto</option>
-  <option value="yourname">Your Name</option>
-  <option value="aot">Attack on Titan</option>
-</select>
+    <div>
+      <label>Theme:</label>
+      <select id="themeSelect" onchange="changeTheme()">
+        <option value="default">Default</option>
+        <option value="aot">Attack on Titan</option>
+        <option value="naruto">Naruto</option>
+        <option value="yourname">Your Name</option>
+        <option value="apothecary">Apothecary Diaries</option>
+      </select>
+    </div>
 
     <ul id="taskList"></ul>
 
