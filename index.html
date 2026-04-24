@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Life Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+    <h1>Life Dashboard</h1>
+
+    <div class="stats">
+      <span>XP: <b id="xp">0</b></span>
+      <span>Level: <b id="level">1</b></span>
+    </div>
+
+    <div class="bar">
+      <div id="progressBar"></div>
+    </div>
+
+    <div class="input">
+      <input id="taskInput" placeholder="Enter a task">
+      <button onclick="addTask()">Add</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <button class="reset" onclick="resetAll()">Reset</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

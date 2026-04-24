@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  font-family: system-ui, Arial;
+  background: #f4f6f8;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  color: #111;
+}
+
+.app {
+  width: 360px;
+  background: white;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+/* Title */
+h1 {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 14px;
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+/* Progress bar */
+.bar {
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  transition: width 0.3s ease;
+}
+
+/* Input */
+.input {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  outline: none;
+}
+
+input:focus {
+  border-color: #22c55e;
+}
+
+/* Buttons */
+button {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  background: #111827;
+  color: white;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+/* Task list */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #fafafa;
+  transition: all 0.15s ease;
+}
+
+li:hover {
+  transform: translateY(-1px);
+  background: #f3f4f6;
+}
+
+/* Reset button */
+.reset {
+  width: 100%;
+  margin-top: 10px;
+  background: #ef4444;
+}
+
+.reset:hover {
+  background: #dc2626;
+}
