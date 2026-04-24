@@ -6,15 +6,21 @@ let level = 1;
 window.onload = function () {
   const savedTasks = JSON.parse(localStorage.getItem("tasks"));
   const savedXP = JSON.parse(localStorage.getItem("xp"));
+  const savedTheme = localStorage.getItem("theme");
 
   if (savedTasks) tasks = savedTasks;
   if (savedXP !== null) xp = savedXP;
+
+  if (savedTheme) {
+    applyTheme(savedTheme);
+    document.getElementById("themeSelect").value = savedTheme;
+  }
 
   updateLevel();
   updateUI();
 };
 
-// Add task (NOW includes XP value)
+// Add task
 function addTask() {
   const input = document.getElementById("taskInput");
   const text = input.value.trim();
@@ -24,7 +30,7 @@ function addTask() {
   tasks.push({
     text: text,
     done: false,
-    xp: 10   // default XP per task
+    xp: 10
   });
 
   input.value = "";
@@ -33,7 +39,7 @@ function addTask() {
   updateUI();
 }
 
-// Complete task (uses task XP instead of fixed 10)
+// Complete task
 function completeTask(index) {
   if (!tasks[index].done) {
     tasks[index].done = true;
@@ -99,12 +105,43 @@ function saveData() {
   localStorage.setItem("xp", JSON.stringify(xp));
 }
 
-// Reset everything
+// Theme change
+function changeTheme() {
+  const theme = document.getElementById("themeSelect").value;
+
+  applyTheme(theme);
+  localStorage.setItem("theme", theme);
+}
+
+// Theme handling
+function applyTheme(theme) {
+  let bg = "";
+
+  if (theme === "aot") {
+    bg = "url('images/aot.jpg')";
+  } else if (theme === "naruto") {
+    bg = "url('images/naruto.jpg')";
+  } else if (theme === "yourname") {
+    bg = "url('images/yourname.jpg')";
+  } else if (theme === "apothecary") {
+    bg = "url('images/apothecary.jpg')";
+  } else {
+    bg = "none";
+  }
+
+  document.body.style.backgroundImage = bg;
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundPosition = "center";
+}
+
+// Reset everything (keeps theme)
 function resetAll() {
   tasks = [];
   xp = 0;
   level = 1;
 
-  localStorage.clear();
+  localStorage.removeItem("tasks");
+  localStorage.removeItem("xp");
+
   updateUI();
 }

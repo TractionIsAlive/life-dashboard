@@ -25,6 +25,14 @@
       <button onclick="addTask()">Add</button>
     </div>
 
+    <select id="themeSelect" onchange="changeTheme()">
+  <option value="default">Default</option>
+  <option value="apothecary">The Apothecary Diaries</option>
+  <option value="naruto">Naruto</option>
+  <option value="yourname">Your Name</option>
+  <option value="aot">Attack on Titan</option>
+</select>
+
     <ul id="taskList"></ul>
 
     <button class="reset" onclick="resetAll()">Reset</button>
